@@ -1,0 +1,76 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static "app/style.css" %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Sign Up</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+</head>
+<body>
+<div class="signup-form">
+    <form action="" method="POST" enctype= "multipart/form_data">{% csrf_token %}
+		<h2>Sign Up</h2>
+		<p>Please fill in this form to create an account!</p>
+		<hr>
+		<!-- {{form}} -->
+		{% for field in form %}
+		<!-- {{field.field_type}} -->
+        <p>
+			{{ field.label_tag }}<br>
+			{{ field }}
+			
+			{% for error in field.errors %}
+			  <p style="color: red">{{ error }}</p>
+			{% endfor %}
+		  </p>
+		{% endfor %}
+<!-- 		
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-paper-plane"></i>
+					</span>                    
+				</div>
+				<input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+			</div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+					</span>                    
+				</div>
+				<input type="text" class="form-control" name="password" placeholder="Password" required="required">
+			</div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+						<i class="fa fa-check"></i>
+					</span>                    
+				</div>
+				<input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+			</div>
+        </div> -->
+
+		<div class="form-group">
+            <input type="Submit" class="btn btn-primary btn-lg" value="Sign Up"></button>
+        </div>
+    </form>
+	<div class="text-center">Already have an account? <a href="{% url 'login'%}">Login here</a></div>
+</div>
+</body>
+</html>
